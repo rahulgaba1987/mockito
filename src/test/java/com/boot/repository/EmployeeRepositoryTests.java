@@ -2,15 +2,18 @@ package com.boot.repository;
 
 import java.util.List;
 import java.util.Optional;
-
+import org.slf4j.Logger;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import com.boot.entity.EmployeeEntity;
+
+
 
 @DataJpaTest
 public class EmployeeRepositoryTests 
@@ -19,6 +22,8 @@ public class EmployeeRepositoryTests
 	private EmployeeRepository employeeRepository;
     
     private EmployeeEntity employee;
+    
+   Logger log =  LoggerFactory.getLogger(EmployeeRepositoryTests.class);
     
     //Junit test for save employee
     
@@ -45,7 +50,7 @@ public class EmployeeRepositoryTests
     public void givenEmployeeObject_whenSave_thenReturnedSavedEmployee()
     {
     	//given employee object
-    	
+    	log.info("Junit test for save operation in employee log");
     	// when :- action or behavior that is going to be test
         EmployeeEntity savedEmployee = employeeRepository.save(employee);
      
